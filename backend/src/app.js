@@ -10,8 +10,8 @@ const app = express();
 app.use(express.json());
 
 // Rutas que podemos usar
-app.use("/api/day", dayRouter);
-app.use("/api/hour", hoursRouter);
+app.use("/api/days", dayRouter);
+app.use("/api/hours", hoursRouter);
 
 // Puerto en el que se va a correr el servidor 
 app.listen(PORT, () => {
