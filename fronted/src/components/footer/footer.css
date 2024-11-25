@@ -1,0 +1,22 @@
+footer{
+    background-color: #cc7c97;
+    height: 80px;
+    line-height: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+body.light footer{
+    background-color: #994e69;
+}
+body.dark footer{
+    background-color: #ffabc6;
+}
+
+body.light footer p{
+    color: white;
+}
+
+body.dark footer p{
+    color: rgb(0, 0, 0);
+}
