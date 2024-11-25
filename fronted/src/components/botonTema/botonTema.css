@@ -32,14 +32,3 @@
     transition: 1s;
 }
 
-body.light {
-    transition: 1s;
-    background-color: white;
-    color: black;
-}
-
-body.dark {
-    transition: 1s;
-    background-color: black;
-    color: white;
-}
