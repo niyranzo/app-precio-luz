@@ -9,11 +9,11 @@ const app = express();
 // Usar middleware para que el servidor pueda entender JSON
 app.use(express.json());
 
-// Rutas que podemos usar
+// Rutas 
 app.use("/api/days", dayRouter);
 app.use("/api/hours", hoursRouter);
 
-// Puerto en el que se va a correr el servidor 
+// Puerto en el que se va a correr el servidor
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

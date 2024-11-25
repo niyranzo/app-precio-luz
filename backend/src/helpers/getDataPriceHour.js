@@ -1,28 +1,22 @@
 //. ----------- IMPORTACIONES ------------- 
 
-import { getDataPrices } from "./getDataPrice";
-
-
-//. ----------- DECLARACIÓN DE VARIABLES ------------- 
-
-const baseUrl = process.env.BASE_URL;
-const dateTimeStart = process.env.DATE_TIME_START;
-const dateTimeEnd = process.env.DATE_TIME_END;
-const timeTruncHour = process.env.TIME_HOUR;
-const url = `${baseUrl}?start_date=${dateTimeStart}&end_date=${dateTimeEnd}&time_trunc=${timeTruncHour}`;
-
-
+import { baseUrl, dateTimeEnd, dateTimeEndHour, dateTimeStart, dateTimeStartHour, timeTruncHour } from "../config/config.js";
+import { getDataPrices } from "./getDataPrice.js";
 
 
 //. ----------- DECLARACIÓN DE FUNCIONES ----------- 
 /**
  * @author Ana
  * @description Filtra los datos de precios según un rango horario
- * @param {string} rangeHour --> "[0-6],[6-12],[12-18],[18-24]"
+ * @param {String} rangeHour --> "[0-6],[6-12],[12-18],[18-24]"
+ * @param {String} startDay
+ * @param {String} endDay
  * @returns {Promise<Array>}
  */
-export const getFilteredPrices = async (rangeHour) => { // ---> const rangeHour = import.meta.env.VITE_HOUR_RANGES.split(","); Incluir donde se llame a la funcion
+export const getFilteredPrices = async (rangeHour, startDay, endDay) => { // ---> const rangeHour = import.meta.env.VITE_HOUR_RANGES.split(","); Incluir donde se llame a la funcion
     try {
+        // url de la API construida con los parametros
+        const url = `${baseUrl}${dateTimeStart}${startDay}${dateTimeStartHour}&${dateTimeEnd}${endDay}${dateTimeEndHour}&${timeTruncHour}`;
 
         // Obtener datos desde la API
         const data = await getDataPrices(url);

@@ -1,6 +1,6 @@
 
 //. ----------- IMPORTACIONES ------------- 
-import { getDataPrices } from "./getDataPrices";
+import { getDataPrices } from "./getDataPrice.js";
 
 
 //. ----------- DECLARACIÓN DE FUNCIONES ----------- 
