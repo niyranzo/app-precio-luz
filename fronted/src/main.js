@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const main = createMain();
     const footer = createFooter();
     const themeBtn = createThemeButton();
+    
     // Crear y añadir el spinner
     const spinner = createSpinner();
     
