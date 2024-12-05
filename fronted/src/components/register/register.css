@@ -1,0 +1,94 @@
+/* Contenedor principal del formulario de registro */
+#div-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+    margin: 50px auto;
+    max-width: 400px;
+    background-color: #7b3d50; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 1s;
+}
+
+/* Estilo del título del formulario */
+#div-register label {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Tema claro */
+body.light #div-register {
+    background-color: #994e69;
+}
+
+body.light #div-register label {
+    color: white;
+}
+
+/* Tema oscuro */
+body.dark #div-register {
+    background-color: #ffabc6;
+}
+
+body.dark #div-register label {
+    color: black;
+}
+
+/* Estilo para los inputs */
+#div-register input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #994e69;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Hover y focus en los inputs */
+#div-register input:hover,
+#div-register input:focus {
+    border-color: #ffabc6;
+    box-shadow: 0 0 5px #ffabc6;
+}
+
+/* Botón de registrar */
+#div-register button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #ffabc6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s, transform 0.3s;
+}
+
+/* Hover y active en el botón */
+#div-register button:hover {
+    background-color: #b36580;
+    transform: scale(1.05);
+}
+
+#div-register button:active {
+    background-color: #7b3d50;
+    transform: scale(0.95);
+}
+
+/* Estilo del mensaje de error */
+#errorMessage {
+    font-size: 14px;
+    color: red;
+    text-align: left;
+    margin-top: -10px;
+    display: none; 
+}
