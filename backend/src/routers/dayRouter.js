@@ -17,8 +17,8 @@ router.get("/start_date=:start/end_date=:end", async (req, res) => {
     }
     try {
         const data = await getDataPriceDays(`${baseUrl}${dateTimeStart}${start}${dateTimeStartHour}&${dateTimeEnd}${end}${dateTimeEndHour}&${timeTruncHour}`);
-        const arr = [...data]
-        res.json(arr)
+        const arr = [...data];
+        res.json(arr);
     }catch (error) {
         console.error("Error al realizar la petición", error);
     }
