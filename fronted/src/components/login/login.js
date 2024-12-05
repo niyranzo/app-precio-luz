@@ -25,7 +25,7 @@ export const createLogin = () => {
   // Detectar clics en el formulario
   const loginForm = divLogin.querySelector("#login-form");
   loginForm.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevenir el comportamiento por defecto de los enlaces y botones
+    event.preventDefault();
 
     const target = event.target;
 
@@ -54,9 +54,9 @@ export const createLogin = () => {
     // Lógica para mostrar la vista de registro
     if (target.id === "register-link") {
       const app = document.getElementById("app");
-      app.innerHTML = ""; // Limpiar el contenido actual
-      const register = createRegister(); // Crear la vista de registro
-      app.appendChild(register); // Mostrar la vista de registro
+      app.innerHTML = ""; 
+      const register = createRegister(); 
+      app.appendChild(register); 
     }
   });
 
