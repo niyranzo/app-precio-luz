@@ -1,0 +1,22 @@
+body.light {
+    transition: 1s;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+body.dark {
+    transition: 1s;
+    background-color: black;
+    color: rgb(255, 255, 255);
+}
+
+body #app{
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Cabecera, main (flexible) y footer */
+    min-height: 100vh;
+}
+
+body{
+    margin: 0;
+}
