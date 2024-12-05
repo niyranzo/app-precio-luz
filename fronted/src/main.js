@@ -1,8 +1,10 @@
 //importaciones
-import { createThemeButton, darkButton, lightButton } from "./components/botonTema/botonTema";
+import { createLuzButton } from "./components/botonLuz/botonLuz";
+import { createThemeButton } from "./components/botonTema/botonTema";
+import { createTiempoButton } from "./components/botonTiempo/botonTiempo";
 import { createFooter } from "./components/footer/footer";
 import { createMain } from "./components/main/main";
-import { createNav } from "./components/nav/nav";
+import { addNav, createNav } from "./components/nav/nav";
 import { createSpinner, showSpinner, hideSpinner } from "./components/spinner/spinner";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,11 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const main = createMain();
     const footer = createFooter();
     const themeBtn = createThemeButton();
+    const luzBtn = createLuzButton();
+    const tiempoBtn = createTiempoButton();
     
     // Crear y añadir el spinner
     const spinner = createSpinner();
     
-    nav.appendChild(themeBtn);
+    //nav.append(themeBtn, luzBtn, tiempoBtn);
     main.appendChild(spinner);
 
     // Crear y añadir el botón de tema
@@ -24,18 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
     app.appendChild(main);
     app.appendChild(footer);
 
-    hideSpinner();
-    showSpinner();
-
-    // Cambio de tema al hacer clic
-    const tema = () => {
-        if (themeBtn.classList.contains("dark-btn")) {
-            darkButton();
-        } else {
-            lightButton();
-        }
-    };
-
-    themeBtn.addEventListener("click", tema);
-    console.log("adf");
+    //añade a un div dentro del nav
+    addNav(themeBtn, luzBtn, tiempoBtn); 
 });

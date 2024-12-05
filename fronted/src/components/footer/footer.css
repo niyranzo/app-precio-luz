@@ -13,10 +13,10 @@ body.dark footer{
     background-color: #ffabc6;
 }
 
-body.light footer p{
+body.light footer a{
     color: white;
 }
 
-body.dark footer p{
+body.dark footer a{
     color: rgb(0, 0, 0);
 }
