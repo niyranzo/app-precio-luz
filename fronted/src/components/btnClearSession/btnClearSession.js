@@ -19,7 +19,7 @@ export const btnClearSession = () => {
         clearSession("userSession"); 
         location.reload(); 
 
-        //' Forma original, cambia el estilo de login
+        //' Forma original, cambia el CSS de login sepa Dios porqué
         // const app = document.getElementById("app"); 
         // app.innerHTML = "";
 
