@@ -7,6 +7,6 @@ router.get("/", getAllUsersHandler);
 //post
 router.post("/", createUserHandler);
 //comprobar el login
-router.get("/login", loginHandler);
+router.get("/username=:username/password=:password", loginHandler);
 
 export default router;

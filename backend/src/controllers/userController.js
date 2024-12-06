@@ -14,8 +14,8 @@ export const getUserHandler = (req,res) => {
 
 //comprobar el login
 export const loginHandler = (req,res) => {
-    const { username, mail, password } = req.body; //tomar la data del body
-    login(username, mail, password, (err, rows) => {
+    const { username, password } = req.params; //tomar la data del body
+    login(username, password, (err, rows) => {
         if(err){
             res.status(500).json({error:err.message}); //500 = error de conexion
         }else{
