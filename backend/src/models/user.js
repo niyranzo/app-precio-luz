@@ -13,7 +13,7 @@ export const createUser = (username, mail, password, callback) =>{
 
 //inicio de la sesion
 export const login = (username, mail, password, callback) => {
-    const sql = "SELECT * FROM user WHERE username = ? && mail = ? && password = ?";
+    const sql = "SELECT * FROM user WHERE username = ? AND mail = ? AND password = ?";
     const params = [username, mail, password];
     db.get(sql, params, function(error, row) { 
         if (error) {

@@ -22,19 +22,9 @@ const db = new sqlite3.Database(DATABASE_PATH, err => {
             CREATE TABLE IF NOT EXISTS day (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             day INTEGER NOT NULL,
-            price INTEGER NOT NULL,
-            lastUpdate TIMESTAMP NOT NULL
+            price INTEGER NOT NULL
             )`
         )
-        db.run(`
-            CREATE TABLE IF NOT EXISTS hours (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            day INTEGER NOT NULL,
-            hour INTEGER NOT NULL,
-            price INTEGER NOT NULL,
-            lastUpdate TIMESTAMP NOT NULL
-            )`
-        );
     });
 });
 export default db;

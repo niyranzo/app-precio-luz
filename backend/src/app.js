@@ -1,4 +1,4 @@
-//npm install cors 
+//npm install cors / npm install express dotenv sqlite3 / npm install dayjs (par el lastUpdate)
 import cors from "cors"
 import express from 'express';
 import dayRouter from "./routers/dayRouter.js";

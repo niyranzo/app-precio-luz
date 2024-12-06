@@ -1,9 +1,12 @@
-import { createDay, getAllDays, getDayById, updateDay } from "../models/day";
+import { dataDays } from "../data/data.js";
+import { createDay, getAllDays, getRangeDays, updatePriceDay } from "../models/day.js";
 
-//traer 1 dia por id
-export const getDayHandler = (req,res) => {
-    const { id } = req.params; //tomar la data
-    getDayById(id, (err, rows) => {
+//traigo la data para crearla si no existe o actualiazarla
+
+//traer la data por un rango de dias 
+export const getDaysRangeHandler = (req,res) => {
+    const { start, end} = req.params;
+    getRangeDays(Number(start), Number(end) , (err, rows) => {
         if(err){
             res.status(500).json({error:err.message}); //500 = error de conexion
         }else{
@@ -13,23 +16,45 @@ export const getDayHandler = (req,res) => {
 }
 
 // tomar todos los dias
-export const getAllDaysHandler = (req,res) => {
-    getAllDays((err, rows) => {
+export const getAllDaysHandler =  (req,res) => {
+    getAllDays(async (err, rows) => {
         if(err){
-            res.status(500).json({error:err.message});//500 = error de conexion
+            res.status(500).json({error:err.message}); //500 = error de conexion
         }else{
             res.status(200).json(rows);
         }
     });
 }
 
-//id, day, price, lastupdate
+//crear todos los dias
+export const createDaysHandler = async (req, res) => {
+    const days = await dataDays();
 
-// crear los dias
+    //tiene que ser un array 
+    if(!Array.isArray(days)){
+        return res.status(404).json({ error: "Debe ser un array de dias" });
+    }
+    
+    let results = [];
+
+    days.forEach(({ day, price }) => {
+        createDay(day, price, (err, result) => {
+            if(err){
+                results.push({error:err.message});//500 = error de conexion
+            }else{
+                results.push(result);
+            }
+        });
+    });
+    res.status(200).json({ message: "Se introdujeron los datos de los dias" });
+} 
+
+
+// crear un dias
 export const createDayHandler = (req,res) => {
-    const { day, price, lastupdate} = req.body; //tomar la data
+    const { day, price} = req.body; //tomar la data
     // createCliente es la consulta sql para crear un cliente
-    createDay(day, price, lastupdate, (err, result) => {
+    createDay(day, price, (err, result) => {
         if(err){
             res.status(500).json({error:err.message});//500 = error de conexion
         }else{
@@ -38,11 +63,11 @@ export const createDayHandler = (req,res) => {
     });
 }
 
-//actualizar los dias 
-export const updateDayHandler = (req, res) => {
-    const { id } = req.params;
-    const { day, price, lastupdate} = req.body; //tomar la data
-    updateDay(id, day, price, lastupdate, (err, result) => {
+//actualizar 1 dia
+export const updatePriceHandler = (req, res) => {
+    const { day } = req.params;
+    const { price} = req.body; //tomar la data
+    updatePriceDay(day, price, (err, result) => {
         if(err){
             res.status(500).json({error:err.message});//500 = error de conexion
         }else{
