@@ -1,9 +1,11 @@
 import "./login.css";
 import { setSession } from "../../helpers/scripts";
 import { createSpinner, showSpinner, hideSpinner } from "../spinner/spinner";
-import { createRegister } from "../register/register"; // Importar vista de registro
+import { createRegister } from "../register/register";
+import { loginUser } from "../../helpers/api.js";
 
 export const createLogin = () => {
+  //. Contenedor principal del formulario
   const divLogin = document.createElement("div");
   divLogin.id = "div-login";
 
@@ -16,31 +18,47 @@ export const createLogin = () => {
         <p id="register-prompt">¿Aún no tienes cuenta? <a href="#" id="register-link">Regístrate</a></p>
         <div id="spinner-container"></div>
     </form>
-`;
+  `;
 
-  // Insertar el spinner dinámicamente en el contenedor
+  // Insertar el spinner
   const spinnerContainer = divLogin.querySelector("#spinner-container");
   spinnerContainer.appendChild(createSpinner());
 
-  // Detectar clics en el formulario
+  //. Detectar clics en el formulario
   const loginForm = divLogin.querySelector("#login-form");
-  loginForm.addEventListener("click", (event) => {
+  loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const target = event.target;
+    const username = divLogin.querySelector("#input-username").value.trim();
+    const password = divLogin.querySelector("#input-passwd").value.trim();
 
-    // Lógica para iniciar sesión
-    if (target.id === "login-button") {
-      const username = divLogin.querySelector("#input-username").value;
-      const password = divLogin.querySelector("#input-passwd").value;
+    if (!username || !password) {
+      alert("Completa todos los campos");
+      return;
+    }
 
-      //! Mostrar spinner durante la simulación de carga
-      showSpinner();
+    // Mostrar spinner
+    showSpinner();
 
+    try {
+
+      //. Login real
+      const userData = await loginUser(username, password);
+
+      // Guardar los datos del usuario en la "sesión"
+      setSession("userSession", userData);
+
+      // Redirigir o recargar la página
+      hideSpinner();
+      alert("Sesión iniciada con éxito");
+      location.reload(); 
+
+    } catch (error) {
+      console.warn("Error en login real:", error.message);
+
+      //. ***** PRUEBAS ***** 
       setTimeout(() => {
         hideSpinner();
-
-        //! SIMULACIÓN, SUSTITUIR POR DATOS REALES
         if (username === "admin" && password === "1234") {
           setSession("userSession", { username });
           alert("Sesión iniciada");
@@ -48,16 +66,21 @@ export const createLogin = () => {
         } else {
           alert("Usuario o contraseña incorrectas");
         }
-      }, 2000);
+      }, 1000);
     }
+  });
 
-    // Lógica para mostrar la vista de registro
-    if (target.id === "register-link") {
-      const app = document.getElementById("app");
-      app.innerHTML = ""; 
-      const register = createRegister(); 
-      app.appendChild(register); 
-    }
+  //. Lógica para mostrar la vista de registro 
+
+  const registerLink = divLogin.querySelector("#register-link");
+
+  registerLink.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const app = document.getElementById("app");
+    app.innerHTML = "";
+    const register = createRegister();
+    app.appendChild(register);
   });
 
   return divLogin;

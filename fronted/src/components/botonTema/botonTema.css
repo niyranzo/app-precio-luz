@@ -13,7 +13,7 @@
 .dark-btn{
     background-color: #994e69;
     color: white;
-    background-image: url(../../../public/img/luna.png);
+    background-image: url(../../../img/luna.png);
 }
 
 .dark-btn:hover{
@@ -24,7 +24,7 @@
 .light-btn{
     background-color: #ffabc6;
     color: rgb(0, 0, 0);
-    background-image: url(../../../public/img/sol.png);
+    background-image: url(../../../img/sol.png);
 }
 
 .light-btn:hover{

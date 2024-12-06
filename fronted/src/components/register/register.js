@@ -1,12 +1,13 @@
 import { btnClearSession } from "../btnClearSession/btnClearSession";
 import { createSpinner, showSpinner, hideSpinner } from "../spinner/spinner";
+import { registerUser } from "../../helpers/api.js";
 import "./register.css";
 
 export const createRegister = () => {
     const divRegister = document.createElement("div");
     divRegister.id = "div-register";
 
-    // Estructura HTML del formulario
+    // Estructura del formulario
     divRegister.innerHTML = `
         <label>Register</label>
         <input type="text" id="input-username" placeholder="Nombre de usuario" required>
@@ -16,26 +17,26 @@ export const createRegister = () => {
         <input type="password" id="input-passwd2" placeholder="Repite la contraseña" required>
         <p id="passwordErrorMessage" style="color: red; display: none;">Las contraseñas no coinciden</p>
         <button type="submit" id="register-button">Registrar</button>
-        <div id="spinner-container"></div>
+        <div id="spinner-container"></div> 
     `;
 
-    // Insertar el spinner dinámicamente en el contenedor
+    // Insertar el spinner
     const spinnerContainer = divRegister.querySelector("#spinner-container");
     spinnerContainer.appendChild(createSpinner());
 
-    setTimeout(() => {
-        // Validación de email
-        const input = divRegister.querySelector("#input-email");
+    setTimeout(() => { //<--- SIMULAR RETRASO PARA EL ESPINER
+
+        //. Validación de email 
+        const inputEmail = divRegister.querySelector("#input-email");
         const errorMessage = divRegister.querySelector("#errorMessage");
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-        input.addEventListener("input", () => {
-            const inputValue = input.value;
-            const value = regex.test(inputValue) ? "none" : "block";
-            errorMessage.style.display = value;
+        inputEmail.addEventListener("input", () => {
+            const isValidEmail = regex.test(inputEmail.value);
+            errorMessage.style.display = isValidEmail ? "none" : "block";
         });
 
-        // Validación de contraseñas
+        //. Validación de contraseñas
         const inputPassword = divRegister.querySelector("#input-passwd");
         const inputPassword2 = divRegister.querySelector("#input-passwd2");
         const passwordErrorMessage = divRegister.querySelector("#passwordErrorMessage");
@@ -47,28 +48,50 @@ export const createRegister = () => {
             return passwordsMatch;
         };
 
-        // Escuchar en ambos campos de contraseña
+        // Escuchar cambios en ambos campos de contraseña
         inputPassword.addEventListener("input", validatePasswords);
         inputPassword2.addEventListener("input", validatePasswords);
 
-        // Validar al hacer clic en el botón "Registrar"
-        registerButton.addEventListener("click", (event) => {
+        // Evento click para el boton de registro
+        registerButton.addEventListener("click", async (event) => {
             event.preventDefault();
 
+            // Validar contraseñas
             if (!validatePasswords()) {
                 alert("Las contraseñas deben coincidir");
                 return;
             }
 
-            //! Mostrar spinner durante la simulación de carga
+            // Validar email
+            if (!regex.test(inputEmail.value)) {
+                alert("Introduce un email válido");
+                return;
+            }
+
+            // Validar que el nombre de usuario no esté vacío
+            const inputUsername = divRegister.querySelector("#input-username");
+            if (inputUsername.value.trim() === "") {
+                alert("El nombre de usuario no puede estar vacío");
+                return;
+            }
+
+            // Mostrar spinner durante el registro
             showSpinner();
 
-            setTimeout(() => {
-                hideSpinner();
+            try {
+                // Llamar a la función para registrar el usuario
+                const result = await registerUser(
+                    inputUsername.value.trim(),
+                    inputEmail.value.trim(),
+                    inputPassword.value.trim()
+                );
 
-                //! SIMULACIÓN: Aquí puedes añadir lógica para guardar datos reales
-                alert("Registro exitoso");
-            }, 2000);
+                hideSpinner();
+                alert("Registro exitoso: " + JSON.stringify(result));
+            } catch (error) {
+                hideSpinner();
+                alert("Error: " + error.message);
+            }
         });
     }, 0);
 
