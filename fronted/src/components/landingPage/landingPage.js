@@ -5,9 +5,11 @@ import { createMain } from "../main/main.js";
 import { createNav } from "../nav/nav.js";
 import { createFooter } from "../footer/footer.js";
 
+import { createSpinner } from "../spinner/spinner.js";
+
 import { setSession, getSession } from "../../helpers/scripts.js";
 
-import "./landingPage.css"
+import "./landingPage.css";
 
 export const createLanding = () => {
     const landing = document.createElement("div");
@@ -16,16 +18,29 @@ export const createLanding = () => {
     const userSession = getSession("userSession");
 
     if (userSession) {
-        // Mostrar la vista principal con Nav y Footer
+
+        //. CREAR ELEMENTOS PRINCIPALES
+
         const nav = createNav();
         const main = createMain();
         const footer = createFooter();
+
+
+        //. CREAR Y AÑADIR SPINNER
+
+        const spinner = createSpinner();
+        main.appendChild(spinner);
+
+
+        //. AÑADIR TODOS LOS ELEMENTOS AL LANDING 
 
         landing.appendChild(nav);
         landing.appendChild(main);
         landing.appendChild(footer);
 
+
     } else {
+        
         // Mostrar la vista de Login
         const login = createLogin();
         landing.appendChild(login);

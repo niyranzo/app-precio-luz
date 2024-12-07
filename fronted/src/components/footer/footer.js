@@ -1,15 +1,16 @@
 import "./footer.css"
-
+import dataFooter from "../../data/footer-user-data.js"
 export const createFooter = () => {
     const footer = document.createElement("footer");
     footer.id = "footer";
-    const p1 = document.createElement("p");
-    const p2 = document.createElement("p");  
-    const p3 = document.createElement("p");
-    p1.textContent="esto es trivial"
-    p2.textContent="© 2024 supernenas+1"
-    p3.textContent="isaias best profe <3"
-    footer.append(p1,p2,p3);
+
+    dataFooter.forEach(d=>{
+        const a = document.createElement("a");
+        a.textContent = d.Nombre;            
+        a.href = d.Git;                       
+        a.target = "_blank";  
+        footer.append(a);
+    })
     return footer;
 }
 

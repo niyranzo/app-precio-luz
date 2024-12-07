@@ -6,8 +6,18 @@ export const createThemeButton = () => {
 
     const loadButton = document.createElement("button");
     loadButton.id = "change-theme-btn";
-    loadButton.classList.add("dark-btn", "btn"); // Agregar una clase base para el botón
+    loadButton.classList.add("dark-btn", "btn", "change-btn"); // Clase para cambiar de tema todos los botones, calse para todos lo botones, clase para este boton
     loadButton.textContent = "Tema";
+   
+    const tema = () => {
+        if (loadButton.classList.contains("dark-btn")) {
+            darkButton();
+        } else {
+            lightButton();
+        }
+    };
+
+    loadButton.addEventListener("click", tema);
     return loadButton;
 };
 
@@ -20,6 +30,14 @@ export const lightButton = () => {
     const loadButton = document.getElementById("change-theme-btn");
     loadButton.classList.remove("light-btn");
     loadButton.classList.add("dark-btn"); 
+ 
+    const luzButton = document.getElementById("luz-btn");
+    luzButton.classList.remove("light-btn");
+    luzButton.classList.add("dark-btn"); 
+
+    const tiempoButton = document.getElementById("tiempo-btn");
+    tiempoButton.classList.remove("light-btn"); 
+    tiempoButton.classList.add("dark-btn");
 };
 
 export const darkButton = () => {
@@ -30,5 +48,13 @@ export const darkButton = () => {
 
     const loadButton = document.getElementById("change-theme-btn");
     loadButton.classList.remove("dark-btn");
-    loadButton.classList.add("light-btn");
+    loadButton.classList.add("light-btn"); 
+
+    const luzButton = document.getElementById("luz-btn");
+    luzButton.classList.remove("dark-btn"); 
+    luzButton.classList.add("light-btn");
+
+    const tiempoButton = document.getElementById("tiempo-btn");
+    tiempoButton.classList.remove("dark-btn"); 
+    tiempoButton.classList.add("light-btn");
 };

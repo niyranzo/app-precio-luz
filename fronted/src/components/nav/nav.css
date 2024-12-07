@@ -1,13 +1,4 @@
-nav{
-    transition: 2s;
-}
-
-body.light nav:hover{
-    background-color:  #cc7c975e;
-    transition: 2s;
-}
-
-body.dark nav:hover{
-    background-color:  #ffabc64f;
-    transition: 2s;
+#nav{
+    display: flex;
+   justify-content:space-around;
 }

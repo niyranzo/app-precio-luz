@@ -1,34 +1,44 @@
-.btn{
-    border: 0px;
-    border-radius: 5px;
-    padding: 10px;
+.btn.change-btn{
     padding-right: 40px;
     padding-left: 15px;
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 55px;
-    transition: 1s;
-    margin: 40px; 
-}
-.dark-btn{
-    background-color: #994e69;
-    color: white;
-    background-image: url(../../../img/luna.png);
 }
 
-.dark-btn:hover{
+.btn{
+    border: 0px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 30px; 
+    transition: 1s;
+    min-width: 50px;
+}
+
+.dark-btn{
     background-color: #b36580;
+    color: white;
+}
+
+.dark-btn.btn.change-btn{
+    background-image: url(../../../public/img/luna.png);
+} 
+
+.dark-btn:hover{
+    background-color: #994e69;
     transition: 1s;
 }
 
 .light-btn{
     background-color: #ffabc6;
     color: rgb(0, 0, 0);
-    background-image: url(../../../img/sol.png);
 }
+
+.light-btn.btn.change-btn {
+    background-image: url(../../../public/img/sol.png);
+} 
 
 .light-btn:hover{
     background-color: #e694af;
     transition: 1s;
 }
-
