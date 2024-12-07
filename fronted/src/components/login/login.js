@@ -46,7 +46,7 @@ export const createLogin = () => {
       const userData = await loginUser(username, password);
 
       // Guardar los datos del usuario en la "sesión"
-      setSession("userSession", userData);
+      setSession("userSession", { username });
 
       // Redirigir o recargar la página
       hideSpinner();

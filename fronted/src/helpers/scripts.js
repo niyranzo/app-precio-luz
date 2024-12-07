@@ -1,15 +1,31 @@
 
-//. FUNCIONES PARA MANEJAR LA "SESIÓN" 
+//. FUNCIONES PARA MANEJAR LA "SESIÓN"
+
+// Guardar datos en localStorage
 export const setSession = (key, value) => {
+    if (!key || value === undefined) {
+        console.error("setSession: Clave o valor inválido");
+        return;
+    }
     localStorage.setItem(key, JSON.stringify(value));
 };
 
+// Obtener datos desde localStorage
 export const getSession = (key) => {
+    if (!key) {
+        console.error("getSession: Clave inválida");
+        return null;
+    }
     const value = localStorage.getItem(key);
     return value ? JSON.parse(value) : null;
 };
 
+// Eliminar datos de localStorage
 export const clearSession = (key) => {
+    if (!key) {
+        console.error("clearSession: Clave inválida");
+        return;
+    }
     localStorage.removeItem(key);
 };
 
