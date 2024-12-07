@@ -7,7 +7,7 @@ export const createLuzButton = () => {
     luzButton.textContent = "Luz";
     
     const verLuz = () => {
-        //caundo le doy me sale el select y el boton de cargar   
+        //cuando le doy me sale el select y el boton de cargar   
     };
 
     luzButton.addEventListener("click", verLuz);

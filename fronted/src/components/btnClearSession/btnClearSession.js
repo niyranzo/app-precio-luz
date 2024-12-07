@@ -10,9 +10,13 @@ export const btnClearSession = () => {
 
 
     // Obtener el tema actual del body y asignar la clase correspondiente
+     
+    /*
     const body = document.body;
     const currentTheme = body.classList.contains("dark") ? "dark" : "light";
     btnClear.classList.add(currentTheme === "dark" ? "dark-btn" : "light-btn");
+    */
+    btnClear.classList.add("dark-btn", "btn");
 
     // Asignar evento de click para cerrar sesión
     btnClear.addEventListener("click", () => {

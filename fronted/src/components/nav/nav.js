@@ -34,13 +34,7 @@ export const createNav = () => {
   nav.append(logo, divNav);
 
   // Lógica de cambio de tema
-  themeBtn.addEventListener("click", () => {
-    if (themeBtn.classList.contains("dark-btn")) {
-      darkButton();
-    } else {
-      lightButton();
-    }
-  });
+ 
 
   // Lógica para cerrar sesión
   btnExit.addEventListener("click", () => {

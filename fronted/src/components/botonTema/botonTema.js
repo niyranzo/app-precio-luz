@@ -38,6 +38,10 @@ export const lightButton = () => {
     const tiempoButton = document.getElementById("tiempo-btn");
     tiempoButton.classList.remove("light-btn"); 
     tiempoButton.classList.add("dark-btn");
+
+    const clearButton = document.getElementById("btn-clear");
+    clearButton.classList.remove("light-btn"); 
+    clearButton.classList.add("dark-btn");
 };
 
 export const darkButton = () => {
@@ -57,4 +61,8 @@ export const darkButton = () => {
     const tiempoButton = document.getElementById("tiempo-btn");
     tiempoButton.classList.remove("dark-btn"); 
     tiempoButton.classList.add("light-btn");
+
+    const clearButton = document.getElementById("btn-clear");
+    clearButton.classList.remove("dark-btn"); 
+    clearButton.classList.add("light-btn");
 };
