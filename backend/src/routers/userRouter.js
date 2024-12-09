@@ -5,8 +5,8 @@ const router = express.Router();
 //get todos los usuarios (post)
 router.get("/", getAllUsersHandler);
 //post
-router.post("/", createUserHandler);
+router.post("/register", createUserHandler);
 //comprobar el login
-router.get("/username=:username/password=:password", loginHandler);
+router.post("/login", loginHandler);
 
 export default router;

@@ -19,6 +19,8 @@ export const createLanding = () => {
 
     if (userSession) {
 
+        landing.classList.remove("logged-out");
+
         //. CREAR ELEMENTOS PRINCIPALES
 
         const nav = createNav();
@@ -40,7 +42,8 @@ export const createLanding = () => {
 
 
     } else {
-        
+         landing.classList.add("logged-out");
+         
         // Mostrar la vista de Login
         const login = createLogin();
         landing.appendChild(login);

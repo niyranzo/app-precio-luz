@@ -11,7 +11,7 @@ export const createLogin = () => {
 
   divLogin.innerHTML = `
     <form id="login-form">
-        <label id="label-login">Login</label>
+        <label id="label-login">Inicia Sesión</label>
         <input type="text" id="input-username" placeholder="Usuario o email" required>
         <input type="password" id="input-passwd" placeholder="Contraseña" required>
         <button id="login-button" type="submit">Iniciar sesión</button>

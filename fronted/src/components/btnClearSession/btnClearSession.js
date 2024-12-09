@@ -5,18 +5,9 @@ export const btnClearSession = () => {
     // Crear el botón de cerrar sesión
     const btnClear = document.createElement("button");
     btnClear.id = "btn-clear";
-    btnClear.setAttribute("type", "button"); // Botón de tipo "button"
+    btnClear.setAttribute("type", "button");
     btnClear.textContent = "Cerrar Sesión";
-
-
-    // Obtener el tema actual del body y asignar la clase correspondiente
-     
-    /*
-    const body = document.body;
-    const currentTheme = body.classList.contains("dark") ? "dark" : "light";
-    btnClear.classList.add(currentTheme === "dark" ? "dark-btn" : "light-btn");
-    */
-    btnClear.classList.add("dark-btn", "btn");
+    btnClear.classList.add("dark-btn", "btn"); // <-- para aplicar el cambio de tema
 
     // Asignar evento de click para cerrar sesión
     btnClear.addEventListener("click", () => {

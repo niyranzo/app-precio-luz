@@ -13,9 +13,17 @@ export const createNav = () => {
   nav.id = "nav";
 
   // Crear el logo
-  const logo = document.createElement("img");
-  logo.src = "/img/logo_luz.png";
-  logo.width = "300";
+  const logo = document.createElement("div");
+  logo.id = "logoId";
+
+
+  // Crear el elemento de imagen dentro del contenedor
+  const logo2 = document.createElement("img");
+  logo2.src = "/img/logo_luz.svg";
+  logo2.alt = "Logo";
+  logo2.style.width = "100%"; 
+  logo2.style.height = "auto"; 
+  logo.appendChild(logo2); 
 
   // Div contenedor para botones
   const divNav = document.createElement("div");
@@ -28,7 +36,7 @@ export const createNav = () => {
   const btnTiempo = createTiempoButton();
 
   // Añadir los botones al contenedor
-  divNav.append(themeBtn, btnExit, btnLuz, btnTiempo);
+  divNav.append(themeBtn, btnTiempo, btnLuz, btnExit);
 
   // Añadir logo y contenedor de botones al nav
   nav.append(logo, divNav);

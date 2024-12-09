@@ -6,9 +6,9 @@
     justify-content: center;
     gap: 20px;
     padding: 40px;
-    margin: 50px auto;
+    margin: 150px auto;
     max-width: 400px;
-    background-color: #7b3d50; /* Fondo general */
+    background-color: #7b3d50;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 1s;

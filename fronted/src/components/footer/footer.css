@@ -1,22 +1,24 @@
-footer{
+footer {
     background-color: #cc7c97;
     height: 80px;
     align-items: center;
     display: flex;
     justify-content: space-around;
-}
-
-body.light footer{
-    background-color: #994e69;
-}
-body.dark footer{
-    background-color: #ffabc6;
-}
-
-body.light footer a{
     color: white;
 }
 
-body.dark footer a{
+body.light footer {
+    background-color: #994e69;
+}
+
+body.dark footer {
+    background-color: #ffabc6;
+}
+
+body.light footer a {
+    color: white;
+}
+
+body.dark footer a {
     color: rgb(0, 0, 0);
 }

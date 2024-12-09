@@ -13,16 +13,21 @@ export const getUserHandler = (req,res) => {
 }
 
 //comprobar el login
-export const loginHandler = (req,res) => {
-    const { username, password } = req.params; //tomar la data del body
-    login(username, password, (err, rows) => {
-        if(err){
-            res.status(500).json({error:err.message}); //500 = error de conexion
-        }else{
-            res.status(200).json(rows);
+export const loginHandler = (req, res) => {
+    const { username, password } = req.body;
+
+    login(username, password, (err, user) => {
+        if (err) {
+            console.error("Error en la consulta SQL:", err.message);
+            return res.status(500).json({ error: "Error del servidor" });
         }
+        if (!user) {
+            return res.status(401).json({ error: "Credenciales incorrectas" });
+        }
+        res.status(200).json(user);
     });
-}
+};
+
 
 // tomar todos los usuarios
 export const getAllUsersHandler = (req,res) => {
