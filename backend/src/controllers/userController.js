@@ -14,13 +14,16 @@ export const getUserHandler = (req,res) => {
 
 //comprobar el login
 export const loginHandler = (req,res) => {
-    const { username, mail, password } = req.body; //tomar la data del body
-    login(username, mail, password, (err, rows) => {
+    const { username, password } = req.body; //tomar la data del body
+    login(username, password, (err, rows) => {
         if(err){
+            console.error("Error en la consulta SQL:", err.message);
             res.status(500).json({error:err.message}); //500 = error de conexion
-        }else{
-            res.status(200).json(rows);
         }
+        if (!user) {
+            return res.status(401).json({ error: "Credenciales incorrectas" });
+        }
+        res.status(200).json(user);
     });
 }
 
