@@ -92,7 +92,7 @@ export const createRegister = () => {
                 );
 
                 hideSpinner();
-                alert("Registro exitoso: " + JSON.stringify(result));
+                alert("Registro exitoso: " + inputUsername.value.trim());
             } catch (error) {
                 hideSpinner();
                 alert("Error: " + error.message);

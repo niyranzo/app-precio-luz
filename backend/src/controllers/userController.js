@@ -15,7 +15,6 @@ export const getUserHandler = (req,res) => {
 //comprobar el login
 export const loginHandler = (req, res) => {
     const { username, password } = req.body;
-
     login(username, password, (err, user) => {
         if (err) {
             console.error("Error en la consulta SQL:", err.message);
