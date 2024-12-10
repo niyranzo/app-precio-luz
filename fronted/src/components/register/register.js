@@ -4,8 +4,13 @@ import { registerUser } from "../../helpers/api.js";
 import "./register.css";
 
 export const createRegister = () => {
+    const divFondoRegister = document.createElement("div");
+    divFondoRegister.id="fondo-register";
+
     const divRegister = document.createElement("div");
     divRegister.id = "div-register";
+
+    divFondoRegister.append(divRegister);
 
     // Estructura del formulario
     divRegister.innerHTML = `
@@ -100,5 +105,5 @@ export const createRegister = () => {
     btnExit.innerHTML = "Volver";
     divRegister.appendChild(btnExit);
 
-    return divRegister;
+    return divFondoRegister;
 };
