@@ -1,4 +1,4 @@
-import './chart.css'
+import './grafico.css'
 export const chart = (data) =>{
     const horas = [];
     const precios = [];
