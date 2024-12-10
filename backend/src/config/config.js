@@ -13,3 +13,4 @@ export const dateTimeStartHour = process.env.DATE_TIME_START_HOUR;
 export const dateTimeEnd = process.env.DATE_TIME_END;
 export const dateTimeEndHour = process.env.DATE_TIME_END_HOUR;
 export const timeTruncHour = process.env.TIME_HOUR;
+export const urlWeather = process.env.URL_WEATHER;
