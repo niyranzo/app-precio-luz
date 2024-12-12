@@ -1,5 +1,6 @@
 import { API_ROUTES } from "../config/routes.js";
 import { validateDate } from "./scripts.js";
+const base = import.meta.env.VITE_API_BASE_URL;
 
 // FETCH PARA OBTENER LOS RANGOS PERMITIDOS 
 // export const getHourRanges = async () => {
@@ -48,6 +49,17 @@ export const fetchHourPrices = async (startDate, endDate, range) => {
     throw error;
   }
 };
+
+export const fetchTiempo = async () => {
+  const url = `${base}/weather/`;
+  try {
+      const response = await fetch(url); 
+      if(!response.ok) throw new Error("Error al recibir data");
+      return await response.json();
+  } catch (error) {
+      console.error("error", error);
+  }
+}
 
 //` ** FETCH PARA VER SI EL USUARIO ESTA EN LA BD **
 export const loginUser = async (username, password) => {
