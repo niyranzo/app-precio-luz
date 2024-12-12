@@ -1,5 +1,8 @@
 import { API_ROUTES } from "../config/routes.js";
 
+import { validateDate } from "./scripts.js";
+const base = import.meta.env.VITE_BASE_URL;
+
 //' ** FETCH PARA OBTENER LOS PRECIOS POR DIAS **
 
 export const fetchDailyPrices2 = async (day, hours) => {
@@ -15,7 +18,7 @@ export const fetchDailyPrices2 = async (day, hours) => {
 }
 
 export const fetchTiempo = async () => {
-  const url = `${base}/weather`;
+  const url = `${base}/weather/`;
   try {
       const response = await fetch(url); 
       if(!response.ok) throw new Error("Error al recibir data");
