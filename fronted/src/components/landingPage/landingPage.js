@@ -11,6 +11,7 @@ import { setSession, getSession } from "../../helpers/scripts.js";
 
 import "./landingPage.css";
 
+
 export const createLanding = () => {
     const landing = document.createElement("div");
     landing.id = "landing";
@@ -32,8 +33,7 @@ export const createLanding = () => {
 
         const spinner = createSpinner();
         main.appendChild(spinner);
-
-
+        
         //. AÑADIR TODOS LOS ELEMENTOS AL LANDING 
 
         landing.appendChild(nav);
