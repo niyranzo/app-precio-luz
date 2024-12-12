@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //importaciones
 import { createLuzButton } from "./components/botonLuz/botonLuz";
 import { createThemeButton } from "./components/botonTema/botonTema";
@@ -31,3 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
     //añade a un div dentro del nav
     addNav(themeBtn, luzBtn, tiempoBtn); 
 });
+=======
+// Importaciones
+import { createLanding } from "./components/landingPage/landingPage.js";
+import { fetchHourPrices } from "./helpers/api.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+    const app = document.getElementById("app");
+
+    // Crear la landing page
+    const landingPage = createLanding();
+    app.appendChild(landingPage);
+});
+>>>>>>> develop

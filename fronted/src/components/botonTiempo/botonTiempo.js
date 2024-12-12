@@ -6,4 +6,8 @@ export const createTiempoButton = () => {
     tiempoButton.classList.add("dark-btn", "btn");
     tiempoButton.textContent = "Tiempo";
     return tiempoButton;
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> develop
