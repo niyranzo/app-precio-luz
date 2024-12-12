@@ -9,28 +9,6 @@ import { createLuzButton } from "../botonLuz/botonLuz.js";
 import { createTiempoButton } from "../botonTiempo/botonTiempo.js";
 
 export const createNav = () => {
-<<<<<<< HEAD
-    const nav = document.createElement("nav");
-    nav.id = "nav";
-
-    //div donde van a estar todos los botones
-    const divNav = document.createElement("div");
-    divNav.id="divNav";
-
-    const logo = document.createElement("img");
-    logo.src="./public/img/logo_luz.png"
-    logo.width="300"
-
-    nav.append(logo, divNav);
-
-    return nav;
-}
-
-export const addNav = (...element) => {
-    const divNav = document.getElementById("divNav");
-    element.forEach(e=>divNav.append(e));
-}
-=======
   const nav = document.createElement("nav");
   nav.id = "nav";
 
@@ -74,4 +52,3 @@ export const addNav = (...element) => {
 
   return nav;
 };
->>>>>>> develop

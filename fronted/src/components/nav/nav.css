@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-#nav{
-    display: flex;
-   justify-content:space-around;
-}
-=======
+
 #nav {
     display: flex;
     justify-content: end;
@@ -20,4 +15,3 @@
     width: 600px; 
     height: auto; 
 }
->>>>>>> develop
