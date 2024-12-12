@@ -1,0 +1,18 @@
+#btn-clear {
+    border: 0px;
+    border-radius: 5px;
+    transition: 1s;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+
+/* Borrar el logo de fondo del boton "padre" */
+#btn-clear.dark-btn {
+    background-image: none; 
+}
+
+#btn-clear.light-btn {
+    background-image: none; 
+}

@@ -1,3 +1,5 @@
+import { createLogin } from "../login/login";
+import { createRegister } from "../register/register";
 import "./main.css"
 
 export const createMain = () => {
