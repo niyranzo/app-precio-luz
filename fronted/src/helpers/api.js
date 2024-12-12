@@ -1,53 +1,29 @@
 import { API_ROUTES } from "../config/routes.js";
-import { validateDate } from "./scripts.js";
-
-// FETCH PARA OBTENER LOS RANGOS PERMITIDOS 
-// export const getHourRanges = async () => {
-//     try {
-//         const response = await fetch("http://localhost:4000/api/hour-ranges");
-//         if (!response.ok) throw new Error("Error al obtener los rangos");
-
-//         const data = await response.json();
-//         return data.hourRanges;
-
-//     } catch (error) {
-//         console.error("Error :", error.message);
-//         throw error;
-//     }
-// };
-
 
 //' ** FETCH PARA OBTENER LOS PRECIOS POR DIAS **
-export const fetchDailyPrices = async (startDate, endDate) => {
+
+export const fetchDailyPrices2 = async (day, hours) => {
   try {
-    validateDate(startDate, endDate);
-
-    const url = API_ROUTES.DAILY_PRICES(startDate, endDate);
+    const url = API_ROUTES.PRICES(day, hours);
     const response = await fetch(url);
-
     if (!response.ok) throw new Error("Error al obtener precios diarios");
+
     return await response.json();
   } catch (error) {
     console.error(error);
-    throw error;
   }
-};
+}
 
-//' ** FETCH PARA OBTENER LOS PRECIOS POR HORAS **
-export const fetchHourPrices = async (startDate, endDate, range) => {
+export const fetchTiempo = async () => {
+  const url = `${base}/weather`;
   try {
-    validateDate(startDate, endDate);
-
-    const url = API_ROUTES.HOUR_PRICES(startDate, endDate, range);
-    const response = await fetch(url);
-
-    if (!response.ok) throw new Error("Error al obtener precios por horas");
-    return await response.json();
+      const response = await fetch(url); 
+      if(!response.ok) throw new Error("Error al recibir data");
+      return await response.json();
   } catch (error) {
-    console.error(error);
-    throw error;
+      console.error("error", error);
   }
-};
+}
 
 //` ** FETCH PARA VER SI EL USUARIO ESTA EN LA BD **
 export const loginUser = async (username, password) => {
@@ -87,3 +63,4 @@ export const registerUser = async (username, mail, password) => {
     throw error;
   }
 };
+

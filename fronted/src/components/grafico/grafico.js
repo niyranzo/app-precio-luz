@@ -1,35 +1,54 @@
-import './grafico.css'
-export const chart = (data) =>{
+import './grafico.css';
+import { Chart, registerables } from 'chart.js';
+
+Chart.register(...registerables);
+
+export const chart = (data) => {
     const horas = [];
     const precios = [];
-    data.keys().forEach(k => {
-        const datos=data.get(k);
-        datos.forEach(({ precio, hora })=>{
-            horas.push(hora);
-            precios.push(precio);
-            ;
-        })
+
+    data.forEach(({ value, datetime }) => {
+        const h = Number(datetime.split("T")[1].split(":")[0]);
+        horas.push(h);
+        precios.push(value);
     });
-    const canva = document.getElementById('miCanva');
-    return new Chart(canva, {
-      type: 'bar', // Tipo de gráfica: 'bar', 'line', 'pie', etc.
+    const canva = document.createElement("canvas");
+    canva.id = "miCanva";
+    new Chart(canva, {
+      type: 'bar',
       data: {
-        labels: horas, // Etiquetas en el eje X
-        datasets: [{
-          label: 'Precio',
-          data: precios, // Datos de la gráfica
-          backgroundColor: "rgba(182, 168, 199, 0.422)",
-          borderColor:  "rgba(182, 168, 199, 1)",
-          borderWidth: 1
-        }]
+          labels: horas,
+          datasets: [{
+              label: 'Precio',
+              data: precios,
+              backgroundColor: "rgba(255, 255, 255, 0.42)",
+              borderColor: "rgba(182, 168, 199, 1)",
+              borderWidth: 1
+          }]
       },
       options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true
+          responsive: true,
+          plugins: {
+              legend: {
+                  labels: {
+                      color: 'white'
+                  }
+              }
+          },
+          scales: {
+              x: {
+                  ticks: {
+                      color: 'white' 
+                  }
+              },
+              y: {
+                  beginAtZero: true,
+                  ticks: {
+                      color: 'white'
+                  }
+              }
           }
-        }
       }
-    });
-}
+  });
+    return canva;
+};
