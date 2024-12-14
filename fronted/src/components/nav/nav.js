@@ -15,7 +15,10 @@ export const createNav = () => {
   // Crear el logo
   const logo = document.createElement("div");
   logo.id = "logoId";
-
+  logo.style.cursor = "pointer";
+  logo.addEventListener("click", () => {
+    window.location.href = "/"; // <-- refresca la pagina para volver al inicio
+  });
 
   // Crear el elemento de imagen dentro del contenedor
   const logo2 = document.createElement("img");

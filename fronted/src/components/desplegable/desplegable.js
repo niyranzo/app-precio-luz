@@ -1,3 +1,5 @@
+import './desplegable.css';
+
 const rangoHoras = import.meta.env.VITE_HOURS_RANGE;
 const rangoDias = import.meta.env.VITE_DAYS_RANGE;
 
@@ -7,8 +9,12 @@ export const contenedorDesplegable = () => {
     
     const texto = document.createElement("p");
     texto.textContent = "Selecciona una franja horaria";
-    texto.style="color:white"
     
+    // Etiqueta para franja horaria
+    const hoursLabel = document.createElement("label");
+    hoursLabel.setAttribute("for", "hoursRangeSelects");
+    hoursLabel.textContent = "Franja horaria:"; 
+
     const hoursRangeSelects = document.createElement("select");
     hoursRangeSelects.id = "hoursRangeSelects";
     
@@ -22,6 +28,11 @@ export const contenedorDesplegable = () => {
         hoursRangeSelects.appendChild(option);
     });
 
+    // Etiqueta para días
+    const daysLabel = document.createElement("label");
+    daysLabel.setAttribute("for", "daysRangeSelects");
+    daysLabel.textContent = "Día:";
+
     const daysRangeSelects = document.createElement("select");
     daysRangeSelects.id = "daysRangeSelects";
     
@@ -32,7 +43,7 @@ export const contenedorDesplegable = () => {
         daysRangeSelects.appendChild(option);
     });
 
-    divDesplegable.append(texto, hoursRangeSelects, daysRangeSelects);
+    divDesplegable.append(texto, hoursLabel, hoursRangeSelects, daysLabel, daysRangeSelects);
 
     return divDesplegable;
 }

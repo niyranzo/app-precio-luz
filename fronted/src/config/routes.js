@@ -8,6 +8,6 @@ export const API_ROUTES = {
     USERS: `${baseUrl}/users`,
     LOGIN: `${baseUrl}/users/login`,
     REGISTER: `${baseUrl}/users/register`,
-    
+    WEATHER: (city) => `${baseUrl}/weather?city=${city}`,
 };
 

@@ -83,39 +83,3 @@
     border-bottom: none;
 }
 
-
-/* Contenedor del selector */
-#selector-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px auto;
-    gap: 10px;
-    background-color: #7b3d506c;
-    border: 1px solid #7b3d506c;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 400px;
-}
-
-/* Etiqueta y selector */
-#selector-container label {
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-#selector-container select {
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-/* Botón */
-#selector-container button {
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-}

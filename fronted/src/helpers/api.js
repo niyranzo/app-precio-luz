@@ -1,7 +1,7 @@
 import { API_ROUTES } from "../config/routes.js";
 
 import { validateDate } from "./scripts.js";
-const base = import.meta.env.VITE_BASE_URL;
+const iconWeatherBase = import.meta.env.VITE_ICON_WEATHER;
 
 //' ** FETCH PARA OBTENER LOS PRECIOS POR DIAS **
 
@@ -17,16 +17,30 @@ export const fetchDailyPrices2 = async (day, hours) => {
   }
 }
 
-export const fetchTiempo = async () => {
-  const url = `${base}/weather/`;
+export const fetchTiempo = async (city) => {
   try {
+      const url = API_ROUTES.WEATHER(city); 
       const response = await fetch(url); 
       if(!response.ok) throw new Error("Error al recibir data");
-      return await response.json();
+      const data = await response.json();
+      data.iconUrl = getWeatherIcon(data.weather[0].icon); 
+      return data;
   } catch (error) {
       console.error("error", error);
   }
 }
+
+
+//. FUNCIÓN PARA GENERAR LA URL DEL ICONO 
+export const getWeatherIcon = (iconCode) => {
+  if (!iconCode) {
+    console.error("Código de icono no proporcionado");
+    return "";
+  }
+  return `${iconWeatherBase}/${iconCode}@2x.png`;
+};
+
+
 
 //` ** FETCH PARA VER SI EL USUARIO ESTA EN LA BD **
 export const loginUser = async (username, password) => {
