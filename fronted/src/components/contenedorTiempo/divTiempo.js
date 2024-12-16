@@ -50,6 +50,10 @@ feelsLikeInfo.setAttribute("data-icon", "🧥");
     const updateWeather = async (city = "") => {
     try {
         const data = await fetchTiempo(city);
+        if(!data) {
+            alert(`${city} no es el nombre de una ciudad o región de España. Vuelve a repasar 📚🗺️`);
+            return;
+        }
         clima.textContent = `Clima: ${data.weather[0].description}`;
         tempActual.textContent = `${data.main.temp}ºC`;
         tempMax.textContent = `Temperatura maxima: ${data.main.temp_max}ºC`;
@@ -71,5 +75,6 @@ feelsLikeInfo.setAttribute("data-icon", "🧥");
 
     additionalInfo.append(clima, tempMin, tempMax, tempSensacion, windInfo, feelsLikeInfo);
     divTiempo.append(p, searchComponent, iconContainer,  tempActual, hr, additionalInfo);
+    
     return divTiempo;
 }

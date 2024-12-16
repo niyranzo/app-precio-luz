@@ -1,7 +1,6 @@
 import './desplegable.css';
 
 const rangoHoras = import.meta.env.VITE_HOURS_RANGE;
-const rangoDias = import.meta.env.VITE_DAYS_RANGE;
 
 export const contenedorDesplegable = () => {
     const divDesplegable = document.createElement('div');
@@ -19,7 +18,7 @@ export const contenedorDesplegable = () => {
     hoursRangeSelects.id = "hoursRangeSelects";
     
     const hours = rangoHoras.split(",");
-    const days = rangoDias.split(",");
+
     
     hours.forEach(h => {
         const option = document.createElement("option");
@@ -35,15 +34,16 @@ export const contenedorDesplegable = () => {
 
     const daysRangeSelects = document.createElement("select");
     daysRangeSelects.id = "daysRangeSelects";
-    
-    days.forEach(h => {
+
+    // Generar dinámicamente los días del mes
+    for (let day = 1; day <= 31; day++) {
         const option = document.createElement("option");
-        option.value = h;
-        option.textContent = h;
+        option.value = day;
+        option.textContent = day;
         daysRangeSelects.appendChild(option);
-    });
+    }
 
     divDesplegable.append(texto, hoursLabel, hoursRangeSelects, daysLabel, daysRangeSelects);
 
     return divDesplegable;
-}
+};

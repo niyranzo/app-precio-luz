@@ -1,3 +1,4 @@
+/* Contenedor principal */
 #search-container {
     display: flex;
     justify-content: center;
@@ -7,16 +8,32 @@
     width: 100%;
 }
 
-#city-selector {
-    padding: 5px;
-    border: 1px solid #fff;
+/* Estilos del campo de texto (input) */
+#city-input {
+    padding: 8px 10px;
+    width: 200px;
+    border: 2px solid #A77E86;
     border-radius: 5px;
-    background: white;
-    color: #A77E86;
+    background-color: #fff;
+    color: #7b3d50;
     font-size: 16px;
     font-weight: bold;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+#city-input::placeholder {
+    color: #A77E86;
+    opacity: 0.7;
+}
+
+/* Efecto al enfocar el input */
+#city-input:focus {
+    border-color: #7b3d50;
+    box-shadow: 0 0 5px rgba(123, 61, 80, 0.5);
+}
+
+/* Botón de búsqueda */
 #search-button {
     padding: 8px 15px;
     border: none;
@@ -26,9 +43,31 @@
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #search-button:hover {
     background-color: #925165;
+    transform: scale(1.05);
+}
+
+#search-button:active {
+    background-color: #6a2b3f;
+    transform: scale(1);
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    #search-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #city-input {
+        width: 100%; 
+    }
+
+    #search-button {
+        width: 100%; 
+    }
 }
